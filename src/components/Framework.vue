@@ -5,7 +5,7 @@
              alt="logo">
         <div class="card-body">
             <h5 class="card-title">{{ name }}</h5>
-            <p class="card-text">{{ name }} has {{ starsCount() }} of stars, {{ stars }} to be precise. If you want to update version, click on the button below</p>
+            <p class="card-text">{{ name }} has {{ starsCount }} of stars, {{ stars }} to be precise. If you want to update version, click on the button below</p>
             <button type="button"
                     class="btn btn-primary"
                     @click="updateVersion">Update</button>
@@ -41,7 +41,9 @@ export default {
   methods: {
     updateVersion() {
       this.$emit('update', this.name);
-    },
+    }
+  },
+  computed: {
     starsCount() {
       console.log(`Calculating number of stars for ${this.name}`);
       if (this.stars > 50000) {
