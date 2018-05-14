@@ -1,28 +1,36 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>BeMoreJs ShowTime - Vue.JS</h1>
+    <div class="card-deck">
+      <framework v-for="framework in list"
+                 :key="framework.name"
+                 :imageUrl="framework.image"
+                 :name="framework.name"
+                 :version="framework.version"
+                 :stars="framework.stars"
+                 @update="updateVersion">
+      </framework>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Framework from './components/Framework';
+import list from './data/list.json';
 
 export default {
-  name: 'app',
+  name: 'App',
+  data: () => ({
+    list
+  }),
   components: {
-    HelloWorld
+    Framework
+  },
+  methods: {
+    updateVersion(name) {
+      const item = this.list.find(f => f.name === name);
+      item.version += 1;
+    }
   }
-}
+};
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
