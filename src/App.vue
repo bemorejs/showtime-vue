@@ -8,7 +8,8 @@
                  :name="framework.name"
                  :version="framework.version"
                  :stars="framework.stars"
-                 @update="updateVersion">
+                 @update="updateVersion"
+                 @stars="updateStars">
       </framework>
     </div>
   </div>
@@ -30,6 +31,10 @@ export default {
     updateVersion(name) {
       const item = this.list.find(f => f.name === name);
       item.version += 1;
+    },
+    updateStars(name) {
+      const item = this.list.find(f => f.name === name);
+      item.stars += 1;
     }
   }
 };

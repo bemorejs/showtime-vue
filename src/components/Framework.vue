@@ -8,7 +8,10 @@
             <p class="card-text">{{ name }} has {{ starsCount }} of stars, {{ stars }} to be precise. If you want to update version, click on the button below</p>
             <button type="button"
                     class="btn btn-primary"
-                    @click="updateVersion">Update</button>
+                    @click="updateVersion">Update version</button>
+            <button type="button" 
+                    class="btn btn-warning"
+                    @click="updateStars">Update stars</button>
         </div>
         <div class="card-footer">
             <small class="text-muted">Current version: {{ version }}</small>
@@ -41,7 +44,10 @@ export default {
   methods: {
     updateVersion() {
       this.$emit('update', this.name);
-    }
+    },
+    updateStars() {
+      this.$emit('stars', this.name);
+    },
   },
   computed: {
     starsCount() {
