@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <h1>BeMoreJs ShowTime - Vue.JS</h1>
+    <h1>BeMoreJs ShowTime - Vue.JS!</h1>
+    <h2>{{ text }}</h2>
+    <input type="text"
+           v-model="text"
+           @keydown.enter="makeAlert">
     <div class="card-deck">
       <framework v-for="framework in list"
                  :key="framework.name"
@@ -16,18 +20,30 @@
 </template>
 
 <script>
-import Framework from './components/Framework';
-import list from './data/list.json';
+import Framework from "./components/Framework";
+import list from "./data/list.json";
 
 export default {
-  name: 'App',
+  name: "App",
   data: () => ({
-    list
+    list,
+    text: ""
   }),
   components: {
     Framework
   },
+  watch: {
+    text(value) {
+      console.log(`Text chnaged to ${value}`);
+    }
+  },
+  mounted() {
+    this.text = "I am text";
+  },
   methods: {
+    makeAlert() {
+      alert("You just pressed enter");
+    },
     updateVersion(name) {
       const item = this.list.find(f => f.name === name);
       item.version += 1;
