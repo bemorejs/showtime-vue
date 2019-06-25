@@ -8,7 +8,7 @@
         <span v-if="name === 'Vue'">*</span>
         <!--<span v-show="name === 'Vue'">*</span>-->
       </h5>
-      <p class="card-text">{{ name }} has {{ starsCount }} of stars, {{ stars }} to be precise. If you want to update version, click on the button below</p>
+      <p class="card-text">{{ name }} has {{ starsCount }} of stars, <strong>{{ stars }} </strong>to be precise. If you want to update version, click on the button below</p>
       <button type="button"
               class="btn btn-primary"
               @click="updateVersion">Update version</button>
@@ -17,7 +17,7 @@
               @click="updateStars">Update stars</button>
     </div>
     <div class="card-footer">
-      <small class="text-muted">Current version: {{ version }}</small>
+      <small class="text-muted">Current version: <strong>{{ version }} </strong> </small>
     </div>
   </div>
 </template>
@@ -70,6 +70,7 @@ $image-size: 100px;
 .logo {
   height: $image-size;
   width: $image-size;
+  object-fit: cover;
   margin: 0 auto;
 }
 </style>
